@@ -10,7 +10,7 @@
     "db:createTables": "node -r dotenv/config ./db/scripts/createTables.js",
     "db:dropTables": "node -r dotenv/config ./db/scripts/dropTables.js",
     "db:populateTables": "node -r dotenv/config ./db/scripts/populateTables.js",
-    "db:resetTables": "node -r dotenv/config ./db/scripts/dropTables.js ./db/scripts/createTables.js ./db/scripts/populateTables.js",
+    "db:resetTables": "npm run db:dropTables && npm run db:createTables && npm run db:populateTables ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
