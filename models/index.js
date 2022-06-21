@@ -1,21 +1,19 @@
-
-export async function getCategories() {
-    console.log("test");
+export default async function getCategories() {
+  console.log("test cats");
 }
 
 export async function getSubcategories() {
-    console.log("test");
+  console.log("test sub cats");
 }
 
 export async function getComments() {
-    console.log("test");
+  console.log("test comment");
 }
 
 export async function getPosts() {
-    console.log("test");
+  console.log("test post");
 }
 
 export async function getCredentials() {
-    console.log("test");
+  console.log("test creds");
 }
-
