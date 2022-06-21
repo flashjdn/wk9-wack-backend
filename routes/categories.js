@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import getCategories from "../models/index.js";
+import { getCategories } from "../models/index.js";
 
 //general get all request
 router.get("/", async function (req, res) {
@@ -12,4 +12,4 @@ router.get("/", async function (req, res) {
   });
 });
 
-export default router;
+export default categoriesRouter;

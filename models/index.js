@@ -1,8 +1,8 @@
-export default async function getCategories() {
+export async function getCategories() {
   console.log("test cats");
 }
 
-export async function getSubcategories() {
+export async function getSubCategories() {
   console.log("test sub cats");
 }
 
