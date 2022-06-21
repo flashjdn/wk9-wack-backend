@@ -1,0 +1,54 @@
+Route planning:
+
+-   Each file represents a table/ table group that will have the same set of routes
+-   Each subject will need its own route and associated id
+ 
+
+
+
+Tables: 
+
+-   Categories: 
+    -   Contains the subject info broken down into what was done each week
+    -   e.g. Week 1 = JS, Week 4 = Node, Week 5 = Databases etc. 
+
+-   Sub-categories
+    -   Contains info on subjects that were covered each day within the week:
+    -   e.g. Week 5 day 1 = intro to postgres, Week 5 day 3 = inner joins
+
+-   User posts: 
+    -   These need to be displayed on the main display at all times, depending on which subject category is selected
+    -   Comments will need to have an id that relates to the subject they belong to i.e.: 
+        {
+        userId: int,
+        postId: int,
+        categoryId: int, - this is what we will reference when making a req to see all comments belonging to one category
+        content: string,
+        postTime: number,
+        postDate: number}
+
+-   User credential: 
+    -   store the username and password of users
+    -   hard coded in the beginning (stored in a lib.js file)
+    -   {
+        userId: int,
+        username: string,
+        password: string
+        }
+    -   Stretch goal is to use google auth 
+
+
+
+Models:
+
+-   These are the functions that are responsible for requesting specific info from the Database
+
+    -   getAll
+        -   comments✅
+        -   users 
+        -   creds✅
+        -   posts✅
+        -   categories✅
+        -   subcategories✅
+
+
