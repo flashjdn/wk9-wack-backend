@@ -12,4 +12,4 @@ router.get("/", async function (req, res) {
   });
 });
 
-export default categoriesRouter;
+export default router;

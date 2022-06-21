@@ -4,7 +4,7 @@ import { getSubCategories } from "../models/index.js";
 
 //general get all request
 router.get("/", async function (req, res) {
-  const result = await getSubcategories();
+  const result = await getSubCategories();
   res.json({
     success: true,
     message: "subcategories woooo",
@@ -12,4 +12,4 @@ router.get("/", async function (req, res) {
   });
 });
 
-export default SubCategoriesrouter;
+export default router;

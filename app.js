@@ -1,6 +1,6 @@
 import express from "express";
 import categoriesRouter from "./routes/categories.js";
-import { subCategoriesRouter } from "./routes/subCategories.js";
+import subCategoriesRouter from "./routes/subCategories.js";
 const app = express();
 const PORT = process.env.port || 3000;
 
@@ -13,8 +13,8 @@ app.get("/", function (req, res) {
   });
 });
 
-app.use("/categories", categories);
-app.use("/sub-categories", subCategories);
+app.use("/categories", categoriesRouter);
+app.use("/sub-categories", subCategoriesRouter);
 
 app.listen(PORT, function () {
   console.log(`Server is running on port ${PORT}`);
