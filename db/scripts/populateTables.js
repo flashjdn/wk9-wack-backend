@@ -48,23 +48,23 @@ async function populateSubCategoriesTable() {
 //*********************** Populate Posts Table ***********************//
 async function populatePostsTable() {
     const res = await query(`
-    INSERT INTO posts (user_id, sub_category_id, title, content, post_date, upvote, pinned)
+    INSERT INTO posts (user_id, sub_category_id, username, title, content, post_date, upvote, pinned)
     VALUES
-    (1, 1, 'Great video to help with React', 'Check out this video here!', CURRENT_TIMESTAMP, 0,FALSE),
-    (1, 4, 'Great video to help with Node', 'Check out this video here!', CURRENT_TIMESTAMP, 2, TRUE),
-    (2, 7, 'Great video to help with SQL', 'Check out this video here!', CURRENT_TIMESTAMP, 3, FALSE),
-    (3, 10, 'Great video to help with Jester', 'Check out this video here!', CURRENT_TIMESTAMP, 1, TRUE);
+    (1, 1, 'Raina', 'Great video to help with React', 'Check out this video here!', CURRENT_TIMESTAMP, 0,FALSE),
+    (1, 4,'Mike', 'Great video to help with Node', 'Check out this video here!', CURRENT_TIMESTAMP, 2, TRUE),
+    (2, 7, 'Stefano','Great video to help with SQL', 'Check out this video here!', CURRENT_TIMESTAMP, 3, FALSE),
+    (3, 10,'Jordan', 'Great video to help with Jester', 'Check out this video here!', CURRENT_TIMESTAMP, 1, TRUE);
     `);
 };
 
 //*********************** Populate Comments Table ***********************//
 async function populateCommentsTable() {
     const res = await query(`
-        INSERT INTO comments (post_id, user_id, content, post_date, upvote, pinned)
+        INSERT INTO comments (post_id, user_id, username, content, post_date, upvote, pinned)
         VALUES
-        (1, 2, 'Thanks for the React video!', CURRENT_TIMESTAMP, 2, FALSE),
-        (2, 1, 'Thanks for the Node video!', CURRENT_TIMESTAMP, 5, TRUE),
-        (1, 3, 'Thanks for the React video!', CURRENT_TIMESTAMP, 0, FALSE);
+        (1, 2, 'Mike', 'Thanks for the React video!', CURRENT_TIMESTAMP, 2, FALSE),
+        (2, 1, 'Jordan', 'Thanks for the Node video!', CURRENT_TIMESTAMP, 5, TRUE),
+        (1, 3, 'Stefano', 'Thanks for the React video!', CURRENT_TIMESTAMP, 0, FALSE);
     `);
 };
 

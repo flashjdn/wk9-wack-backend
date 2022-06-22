@@ -73,6 +73,7 @@ const createPostsTableSqlString = `
     CREATE TABLE IF NOT EXISTS posts (
         post_id INT GENERATED ALWAYS AS IDENTITY,
         user_id INT NOT NULL,
+        username VARCHAR(16) NOT NULL,
         sub_category_id INT NOT NULL,
         title VARCHAR(64) NOT NULL,
         content TEXT NOT NULL,
@@ -100,6 +101,7 @@ const createCommentsTableSqlString = `
     CREATE TABLE IF NOT EXISTS comments(
         comment_id INT GENERATED ALWAYS AS IDENTITY,
         post_id INT NOT NULL,
+        username VARCHAR(16) NOT NULL,
         user_id INT NOT NULL,
         content TEXT, 
         post_date TIMESTAMP, 
