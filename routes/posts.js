@@ -17,7 +17,6 @@ router.get("/", async function (req, res) {
 // ************** Create Request **************************************
 router.post("/", async function (req, res) {
     const result = await createPost(req);
-    console.log(result);
     res.json({
         success: true, 
         payload: result,
