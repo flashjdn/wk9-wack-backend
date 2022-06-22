@@ -67,6 +67,7 @@ export async function editPost(post_id, title, content) {
     return result.command;
 };
 
+
 export async function incrementUpvote(post_id) {
     const result = await query(`
         UPDATE posts

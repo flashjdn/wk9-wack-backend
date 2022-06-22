@@ -1,7 +1,8 @@
 import express from "express";
-import categoriesRouter from "./routes/categories.js";
-import subCategoriesRouter from "./routes/subCategories.js";
+// import categoriesRouter from "./routes/categories.js";
+// import subCategoriesRouter from "./routes/subCategories.js";
 import { postsRouter } from "./routes/posts.js";
+import { commentsRouter } from "./routes/comments.js";
 
 const app = express();
 const PORT = process.env.port || 3000;
@@ -20,8 +21,11 @@ app.get("/", function (req, res) {
 
 // ************************ Routers **************************************
 app.use("/posts", postsRouter);
-app.use("/categories", categoriesRouter);
-app.use("/sub-categories", subCategoriesRouter);
+app.use("/comments", commentsRouter);
+
+
+// app.use("/categories", categoriesRouter);
+// app.use("/sub-categories", subCategoriesRouter);
 
 
 // ************************ Port  **************************************
