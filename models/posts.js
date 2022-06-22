@@ -2,19 +2,19 @@ import { query } from "../db/index.js";
 
 export async function createPost(req) {
     
-    const [ user_id, sub_category_id, title, content ] =
+    const [ user_id, sub_category_id, username, title, content ] =
     [ Number(req.body.user_id), Number(req.body.sub_category_id), 
-        req.body.title, req.body.content ];
+        req.body.username, req.body.title, req.body.content ];
     
     
-    console.log(user_id, sub_category_id, title, content);
+    console.log(user_id, sub_category_id, username, title, content);
     const result = query(`
         INSERT INTO posts 
-        (user_id, sub_category_id, title, content, post_date, upvote, pinned)
+        (user_id, sub_category_id, username, title, content, post_date, upvote, pinned)
         VALUES 
-        ($1, $2, $3, $4, CURRENT_TIMESTAMP, 0, FALSE) 
+        ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP, 0, FALSE) 
         RETURNING *;`,
-        [user_id], [sub_category_id], [title], [content]
+        [user_id], [sub_category_id], [username], [title], [content]
     );
     console.log(result);
     return result;

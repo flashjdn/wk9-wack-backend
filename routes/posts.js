@@ -16,12 +16,6 @@ router.get("/", async function (req, res) {
 
 // ************** Create Request **************************************
 router.post("/", async function (req, res) {
-    // const [ user_id, sub_category_id, title, content ] =
-    // [ Number(req.body.user_id), Number(req.body.sub_category_id), 
-    //     req.body.title, req.body.content ];
-
-    // const result = await createPost(
-    //     user_id, sub_category_id, title, content);
     const result = await createPost(req);
     console.log(result);
     res.json({
