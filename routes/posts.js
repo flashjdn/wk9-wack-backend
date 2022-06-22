@@ -4,7 +4,8 @@ import { createPost,
         getPostsByUser,
         getPostsByMostLiked,
         getPostsChronological,
-        getPostsReverseChronological
+        getPostsReverseChronological,
+        deletePost,
         } from "../models/posts.js";
 
 const router = express.Router();
@@ -63,6 +64,14 @@ router.post("/", async function (req, res) {
 });
 
 
-
+// ************** Delete Request **************************************
+router.delete("/delete/:post_id", async function (req, res) {
+    const post_id = req.params.post_id;
+    const result = await deletePost(post_id);
+    res.json({
+        success: true,
+        payload: result
+    });
+});
 
 export { router as postsRouter }; 

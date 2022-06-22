@@ -94,3 +94,16 @@ Delete
         - Delete the main post (do this first)
         - Delete all associated comments (come back to this after comments CRUD operators)
 */
+
+// ************** Delete Request **************************************
+
+export async function deletePost(post_id) {
+    const result = await query(`
+        DELETE FROM posts
+        WHERE post_id = $1;`, 
+    [post_id]);
+    if (result.rowCount === 0) {
+        return `No post found with ID: ${post_id}`;
+    };
+    return result.command;
+};
