@@ -5,7 +5,7 @@ import { createComment,
         getCommentsByMostLiked,
         getCommentsChronological,
         getCommentsReverseChronological,
-        // deleteComment,
+        deleteComment,
         incrementUpvote,
         pinComment,
         unPinComment,
@@ -108,13 +108,13 @@ router.put("/unpin/:comment_id", async function (req, res) {
 });
 
 // ************** Delete Request **************************************
-// router.delete("/delete/:post_id", async function (req, res) {
-//     const post_id = req.params.post_id;
-//     const result = await deletePost(post_id);
-//     res.json({
-//         success: true,
-//         payload: result
-//     });
-// });
+router.delete("/delete/:comment_id", async function (req, res) {
+    const comment_id = req.params.comment_id;
+    const result = await deleteComment(comment_id);
+    res.json({
+        success: true,
+        payload: result
+    });
+});
 
 export { router as commentsRouter }; 

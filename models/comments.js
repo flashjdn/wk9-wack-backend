@@ -104,13 +104,13 @@ export async function unPinComment(comment_id) {
 };
 
 // ************** Delete Request **************************************
-// export async function deletePost(post_id) {
-//     const result = await query(`
-//         DELETE FROM posts
-//         WHERE post_id = $1;`, 
-//         [post_id]);
-//     if (result.rowCount === 0) {
-//         return `No post found with ID: ${post_id}`;
-//     };
-//     return result.command;
-// };
+export async function deleteComment(comment_id) {
+    const result = await query(`
+        DELETE FROM comments
+        WHERE comment_id = $1;`, 
+        [comment_id]);
+    if (result.rowCount === 0) {
+        return `No post found with ID: ${comment_id}`;
+    };
+    return result.command;
+};
