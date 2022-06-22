@@ -65,45 +65,43 @@ export async function getCommentsReverseChronological(post_id) {
 };
 
 // ************** Update Requests **************************************
-// export async function editPost(post_id, title, content) {
-//     const result = await query(`
-//         UPDATE posts
-//         SET title = $1, content = $2
-//         WHERE post_id = $3;`,
-//         [title, content, post_id]);
-//     console.log(result.command)
-//     return result.command;
-// };
+export async function editComment(comment_id, content) {
+    const result = await query(`
+        UPDATE comments
+        SET content = $1
+        WHERE comment_id = $2;`,
+        [content, comment_id]);
+    return result.command;
+};
 
+export async function incrementUpvote(comment_id) {
+    const result = await query(`
+        UPDATE comments
+        SET upvote = upvote + 1 
+        WHERE comment_id = $1;`, 
+        [comment_id]);
+    return result.command;
+};
 
-// export async function incrementUpvote(post_id) {
-//     const result = await query(`
-//         UPDATE posts
-//         SET upvote = upvote + 1 
-//         WHERE post_id = $1;`, 
-//         [post_id]);
-//     return result.command;
-// };
+export async function pinComment(comment_id) {
+    const result = await query(`
+        UPDATE comments
+        SET pinned = TRUE
+        WHERE comment_id = $1
+        RETURNING *;`,
+        [comment_id]);
+    return result.command
+};
 
-// export async function pinPost(post_id) {
-//     const result = await query(`
-//         UPDATE posts
-//         SET pinned = TRUE
-//         WHERE post_id = $1
-//         RETURNING *;`,
-//         [post_id]);
-//     return result.command
-// };
-
-// export async function unPinPost(post_id) {
-//     const result = await query(`
-//         UPDATE posts
-//         SET pinned = FALSE
-//         WHERE post_id = $1
-//         RETURNING *;`,
-//         [post_id]);
-//     return result.command;
-// };
+export async function unPinComment(comment_id) {
+    const result = await query(`
+        UPDATE comments
+        SET pinned = FALSE
+        WHERE comment_id = $1
+        RETURNING *;`,
+        [comment_id]);
+    return result.command;
+};
 
 // ************** Delete Request **************************************
 // export async function deletePost(post_id) {

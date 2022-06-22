@@ -63,7 +63,6 @@ export async function editPost(post_id, title, content) {
         SET title = $1, content = $2
         WHERE post_id = $3;`,
         [title, content, post_id]);
-    console.log(result.command)
     return result.command;
 };
 

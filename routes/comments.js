@@ -5,11 +5,11 @@ import { createComment,
         getCommentsByMostLiked,
         getCommentsChronological,
         getCommentsReverseChronological,
-        // deleteComments,
-        // incrementUpvote,
-        // pinComments,
-        // unPinComments,
-        // editComments,
+        // deleteComment,
+        incrementUpvote,
+        pinComment,
+        unPinComment,
+        editComment,
         } from "../models/comments.js";
 
 const router = express.Router();
@@ -68,46 +68,44 @@ router.get("/byoldest/:post_id", async function (req, res) {
     });
 });
 
-
-
 // ************** Update Requests **************************************
-// router.put("/edit/:post_id", async function (req, res) {
-//     const post_id = req.params.post_id;
-//     const [ title, content ] = [ req.body.title, req.body.content ];
-//     const result = await editPost(post_id, title, content);
-//     res.json({
-//         success: true,
-//         payload: result
-//     });
-// });
+router.put("/edit/:comment_id", async function (req, res) {
+    const comment_id = req.params.comment_id;
+    const content  = req.body.content;
+    const result = await editComment(comment_id, content);
+    res.json({
+        success: true,
+        payload: result
+    });
+});
 
 
-// router.put("/upvote/:post_id", async function (req, res) {
-//     const post_id = req.params.post_id;
-//     const result = await incrementUpvote(post_id);
-//     res.json({
-//         success: true, 
-//         payload: result
-//     });
-// });
+router.put("/upvote/:comment_id", async function (req, res) {
+    const comment_id = req.params.comment_id;
+    const result = await incrementUpvote(comment_id);
+    res.json({
+        success: true, 
+        payload: result
+    });
+});
 
-// router.put("/pin/:post_id", async function (req, res) {
-//     const post_id = req.params.post_id;
-//     const result = await pinPost(post_id);
-//     res.json({
-//         success: true, 
-//         payload: result
-//     });
-// });
+router.put("/pin/:comment_id", async function (req, res) {
+    const comment_id = req.params.comment_id;
+    const result = await pinComment(comment_id);
+    res.json({
+        success: true, 
+        payload: result
+    });
+});
 
-// router.put("/unpin/:post_id", async function (req, res) {
-//     const post_id = req.params.post_id;
-//     const result = await unPinPost(post_id);
-//     res.json({
-//         success: true, 
-//         payload: result
-//     });
-// });
+router.put("/unpin/:comment_id", async function (req, res) {
+    const comment_id = req.params.comment_id;
+    const result = await unPinComment(comment_id);
+    res.json({
+        success: true, 
+        payload: result
+    });
+});
 
 // ************** Delete Request **************************************
 // router.delete("/delete/:post_id", async function (req, res) {
