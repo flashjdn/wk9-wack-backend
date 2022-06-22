@@ -1,33 +1,32 @@
 import { query } from "../db/index.js";
-/*
-    Create:
-    - post_id is automatically generated
-Paramaters:
-    - user_id
-    - sub_cateogory_id
-    - title 
-    - content
 
-In the functionality     
-    - post_date (CURRENT_TIMESTAMP)
-    - upvote (set to 0) 
-    - pin (set to false) 
-*/
-
-export async function createPost(user_id, sub_category_id, title, content) {
-    const result = await query(`
-        INSERT INTO posts (user_id, sub_category_id, title, content, post_date, upvote, pinned)
+export async function createPost(req) {
+    
+    const [ user_id, sub_category_id, title, content ] =
+    [ Number(req.body.user_id), Number(req.body.sub_category_id), 
+        req.body.title, req.body.content ];
+    
+    
+    console.log(user_id, sub_category_id, title, content);
+    const result = query(`
+        INSERT INTO posts 
+        (user_id, sub_category_id, title, content, post_date, upvote, pinned)
         VALUES 
-        ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP, 0, false);`,
-        [user_id, sub_category_id, title, content]
+        ($1, $2, $3, $4, CURRENT_TIMESTAMP, 0, FALSE) 
+        RETURNING *;`,
+        [user_id], [sub_category_id], [title], [content]
     );
+    console.log(result);
     return result;
 };
 
-
-
 /*    
 Read 
+
+export async function getPosts() {
+  console.log("test post");
+}
+
     - Get request 
     Paramaters: 
     - By user_id

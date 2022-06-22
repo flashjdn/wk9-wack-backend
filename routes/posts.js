@@ -1,6 +1,9 @@
 import express from "express";
+import { createPost } from "../models/posts.js";
+
 const router = express.Router();
-import getPosts from "../models/index.js";
+
+
 
 //general get all posts request
 router.get("/", async function (req, res) {
@@ -11,6 +14,23 @@ router.get("/", async function (req, res) {
     });
 });
 
-// CREATE request 
+// ************** Create Request **************************************
+router.post("/", async function (req, res) {
+    // const [ user_id, sub_category_id, title, content ] =
+    // [ Number(req.body.user_id), Number(req.body.sub_category_id), 
+    //     req.body.title, req.body.content ];
+
+    // const result = await createPost(
+    //     user_id, sub_category_id, title, content);
+    const result = await createPost(req);
+    console.log(result);
+    res.json({
+        success: true, 
+        payload: result,
+    });
+});
 
 
+
+
+export { router as postsRouter }; 

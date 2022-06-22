@@ -14,7 +14,8 @@ const pool = new pg.Pool({
     typeof process.env.PGDATABASE === "undefined" || typeof process.env.PGPASSWORD === "undefined" || 
     typeof process.env.PGPORT === "undefined" ) {
         console.log("Some or all enivronment variables missing in Pool");
-    };
+    }
+    console.log("credentials are working");
 };
 
 export function query(text, params, callback) {
