@@ -48,7 +48,6 @@ async function createLearningCategoriesTable() {
     console.log(`${res.command} Created new table named learning categories`);
 };
 
-
 //*********************** Sub Categories Table ***********************//
 
 const createSubCategoriesTableSqlString = `
@@ -96,7 +95,6 @@ async function createPostsTable() {
 };
 
 //*********************** Comments Table ***********************//
-
 
 const createCommentsTableSqlString = `
     CREATE TABLE IF NOT EXISTS comments(

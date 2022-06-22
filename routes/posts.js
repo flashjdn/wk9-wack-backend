@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import getPosts from "../models/index.js";
 
-//general get all request
+//general get all posts request
 router.get("/", async function (req, res) {
     const result = await getPosts();
     res.json({
@@ -10,3 +10,7 @@ router.get("/", async function (req, res) {
         payload: result
     });
 });
+
+// CREATE request 
+
+

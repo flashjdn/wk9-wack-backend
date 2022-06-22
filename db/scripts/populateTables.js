@@ -13,7 +13,6 @@ async function populateUsersTable() {
     `);
 };
 
-
 //*********************** Populate Learning Categories Table ***********************//
 async function populateLearningCategoriesTable() {
     const res = await query(`
@@ -67,7 +66,6 @@ async function populateCommentsTable() {
         (2, 1, 'Thanks for the Node video!', CURRENT_TIMESTAMP, 5, TRUE),
         (1, 3, 'Thanks for the React video!', CURRENT_TIMESTAMP, 0, FALSE);
     `);
-
 };
 
 //*********************** Calling all functions for script ***********************//
