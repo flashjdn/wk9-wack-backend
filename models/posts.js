@@ -56,52 +56,52 @@ export async function getPostsReverseChronological() {
     return result.rows;
 };
 
-/*
-Update 
+// ************** Update Requests **************************************
+export async function editPost(post_id, title, content) {
+    const result = await query(`
+        UPDATE posts
+        SET title = $1, content = $2
+        WHERE post_id = $3;`,
+        [title, content, post_id]);
+    console.log(result.command)
+    return result.command;
+};
 
-- Update upvote
-    Parameter: 
-    - post_id
-    Functionality:
-    - upvote++ 
+export async function incrementUpvote(post_id) {
+    const result = await query(`
+        UPDATE posts
+        SET upvote = upvote + 1 
+        WHERE post_id = $1;`, 
+        [post_id]);
+    return result.command;
+};
 
-- Update pin 
-  Parameter: 
-    - post_id
-    Functionality:
-    - change FALSE to TRUE 
+export async function pinPost(post_id) {
+    const result = await query(`
+        UPDATE posts
+        SET pinned = TRUE
+        WHERE post_id = $1
+        RETURNING *;`,
+        [post_id]);
+    return result.command
+};
 
-- Edit content
-    Parameter: 
-    - post_id
-    Functionality:
-    - change the title 
-    - change the content
-
-    STRETCH goal:
-    - change location
-
-
-
-*/
-
-/*
-Delete
-    - Delete comment 
-    Paramater: 
-        - post_id
-    Functionality: 
-        - Delete the main post (do this first)
-        - Delete all associated comments (come back to this after comments CRUD operators)
-*/
+export async function unPinPost(post_id) {
+    const result = await query(`
+        UPDATE posts
+        SET pinned = FALSE
+        WHERE post_id = $1
+        RETURNING *;`,
+        [post_id]);
+    return result.command;
+};
 
 // ************** Delete Request **************************************
-
 export async function deletePost(post_id) {
     const result = await query(`
         DELETE FROM posts
         WHERE post_id = $1;`, 
-    [post_id]);
+        [post_id]);
     if (result.rowCount === 0) {
         return `No post found with ID: ${post_id}`;
     };

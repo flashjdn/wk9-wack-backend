@@ -6,11 +6,13 @@ import { createPost,
         getPostsChronological,
         getPostsReverseChronological,
         deletePost,
+        incrementUpvote,
+        pinPost,
+        unPinPost,
+        editPost,
         } from "../models/posts.js";
 
 const router = express.Router();
-
-
 
 // ************** Get Requests **************************************
 router.get("/", async function (req, res) {
@@ -53,7 +55,6 @@ router.get("/:username", async function (req, res) {
     });
 });
 
-
 // ************** Create Request **************************************
 router.post("/", async function (req, res) {
     const result = await createPost(req);
@@ -63,6 +64,44 @@ router.post("/", async function (req, res) {
     });
 });
 
+// ************** Update Requests **************************************
+router.put("/edit/:post_id", async function (req, res) {
+    const post_id = req.params.post_id;
+    const [ title, content ] = [ req.body.title, req.body.content ];
+    const result = await editPost(post_id, title, content);
+    res.json({
+        success: true,
+        payload: result
+    });
+});
+
+
+router.put("/upvote/:post_id", async function (req, res) {
+    const post_id = req.params.post_id;
+    const result = await incrementUpvote(post_id);
+    res.json({
+        success: true, 
+        payload: result
+    });
+});
+
+router.put("/pin/:post_id", async function (req, res) {
+    const post_id = req.params.post_id;
+    const result = await pinPost(post_id);
+    res.json({
+        success: true, 
+        payload: result
+    });
+});
+
+router.put("/unpin/:post_id", async function (req, res) {
+    const post_id = req.params.post_id;
+    const result = await unPinPost(post_id);
+    res.json({
+        success: true, 
+        payload: result
+    });
+});
 
 // ************** Delete Request **************************************
 router.delete("/delete/:post_id", async function (req, res) {
