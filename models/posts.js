@@ -1,10 +1,10 @@
 import { query } from "../db/index.js";
 
+// ************** Create Request **************************************
 export async function createPost(req) {
-    
     const [ user_id, sub_category_id, username, title, content ] =
     [ Number(req.body.user_id), Number(req.body.sub_category_id), 
-        req.body.username, req.body.title, req.body.content ];
+    req.body.username, req.body.title, req.body.content ];
     
     const result = await query(`
         INSERT INTO posts 
@@ -17,19 +17,46 @@ export async function createPost(req) {
     return result.rows;
 };
 
-/*    
-Read 
+// ************** Get Requests **************************************
+export async function getAllPosts() {
+    const result = await query(`
+    SELECT * FROM posts;`);
+    return result.rows;
+};
 
-export async function getPosts() {
-  console.log("test post");
-}
+export async function getPostsByUser(username) {
+    const result = await query(`
+        SELECT * FROM posts
+        WHERE username ILIKE  $1
+        ORDER BY post_date DESC;
+    `, 
+    [username]);     
+    return result.rows;
+};
 
-    - Get request 
-    Paramaters: 
-    - By user_id
-    - By most liked 
-    - General get all 
+export async function getPostsByMostLiked() {
+    const result = await query(`
+        SELECT * FROM posts
+        ORDER BY upvote DESC;
+    `);
+    return result.rows;
+};
 
+export async function getPostsChronological() {
+    const result = await query(`
+        SELECT * FROM posts
+        ORDER BY post_date  DESC;`)
+    return result.rows;
+};
+
+export async function getPostsReverseChronological() {
+    const result = await query(`
+        SELECT * FROM posts
+        ORDER BY post_date ASC;`)
+    return result.rows;
+};
+
+/*
 Update 
 
 - Update upvote
@@ -54,6 +81,11 @@ Update
     STRETCH goal:
     - change location
 
+
+
+*/
+
+/*
 Delete
     - Delete comment 
     Paramater: 
