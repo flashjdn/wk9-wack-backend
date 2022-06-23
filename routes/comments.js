@@ -2,6 +2,7 @@ import express from "express";
 import {
   createComment,
   getAllComments,
+  getAllCommentsById,
   getCommentsByUser,
   getCommentsByMostLiked,
   getCommentsChronological,
@@ -17,10 +18,6 @@ const router = express.Router();
 
 // ************** Create Request **************************************
 
-router.get("/", (req, res) => {
-  res.json({ me: "dd" });
-});
-
 router.post("/", async function (req, res) {
   const result = await createComment(req);
   res.json({
@@ -30,9 +27,19 @@ router.post("/", async function (req, res) {
 });
 
 // ************** Get Requests **************************************
+
+router.get("/", async function (req, res) {
+    const result = await getAllComments();
+    res.json({
+        success: true,
+        payload: result,
+    });
+});
+
+
 router.get("/all-comments/:post_id", async function (req, res) {
   const post_id = req.params.post_id;
-  const result = await getAllComments(post_id);
+  const result = await getAllCommentsById(post_id);
   res.json({
     success: true,
     payload: result,

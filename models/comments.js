@@ -19,7 +19,13 @@ export async function createComment(req) {
 };
 
 // ************** Get Requests **************************************
-export async function getAllComments(post_id) {
+export async function getAllComments() {
+    const result = await query(`
+    SELECT * FROM comments`);
+    return results.row;
+}
+
+export async function getAllCommentsById(post_id) {
     const result = await query(`
     SELECT * FROM comments
     WHERE post_id = $1;`,
