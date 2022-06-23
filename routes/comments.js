@@ -129,4 +129,4 @@ router.delete("/delete/:comment_id", async function (req, res) {
   });
 });
 
-export default router;
+export { router as commentsRouter };
