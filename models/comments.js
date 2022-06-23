@@ -30,7 +30,6 @@ export async function getAllComments() {
 }
 
 export async function getAllCommentsById(post_id) {
-    console.log(post_id)
     const result = await query(`
     SELECT * FROM comments
     WHERE post_id = $1;`,
@@ -40,16 +39,14 @@ export async function getAllCommentsById(post_id) {
 }
 
 export async function getCommentsByUser(username) {
-  const result = await query(
-    `
+  const result = await query(`
         SELECT * FROM comments
         WHERE username ILIKE  $1
         ORDER BY post_date DESC;
     `,
-    [username]
-  );
-  return result.rows;
-}
+    [username]);
+    return result.rows;
+};
 
 export async function getCommentsByMostLiked(post_id) {
   const result = await query(
