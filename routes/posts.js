@@ -31,6 +31,8 @@ router.get("/:username", async function (req, res) {
     });
 });
 
+
+// no longer works
 router.get("/mostliked", async function (req, res) {
     const result = await getPostsByMostLiked();
     res.json({
@@ -39,6 +41,8 @@ router.get("/mostliked", async function (req, res) {
     });
 });
 
+
+// no longer works
 router.get("/bynewest", async function (req, res) {
     const result = await getPostsChronological();
     res.json({
@@ -47,6 +51,7 @@ router.get("/bynewest", async function (req, res) {
     });
 });
 
+// no longer works
 router.get("/byoldest", async function (req, res) {
     const result = await getPostsReverseChronological();
     res.json({
@@ -54,7 +59,6 @@ router.get("/byoldest", async function (req, res) {
         payload: result
     });
 });
-
 
 
 // ************** Create Request **************************************

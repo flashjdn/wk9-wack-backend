@@ -30,8 +30,8 @@ export async function getAllComments() {
 }
 
 export async function getAllCommentsById(post_id) {
-  const result = await query(
-    `
+    console.log(post_id)
+    const result = await query(`
     SELECT * FROM comments
     WHERE post_id = $1;`,
     [post_id]

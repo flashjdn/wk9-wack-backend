@@ -36,6 +36,7 @@ router.get("/", async function (req, res) {
 
 router.get("/:post_id", async function (req, res) {
     const post_id = req.params.post_id;
+    console.log(post_id)
     const result = await getAllCommentsById(post_id);
     res.json({
         success: true,
