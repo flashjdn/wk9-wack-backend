@@ -115,4 +115,4 @@ router.delete("/delete/:post_id", async function (req, res) {
     });
 });
 
-export { router as postsRouter }; 
+export default router; 
