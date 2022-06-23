@@ -7,7 +7,7 @@ import cors from "cors";
 import logger from "morgan";
 
 import postsRouter from "./routes/posts.js";
-import { commentsRouter } from "./routes/comments.js";
+import commentsRouter from "./routes/comments.js";
 
 const app = express();
 
