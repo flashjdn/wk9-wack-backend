@@ -43,6 +43,7 @@ router.get("/:post_id", async function (req, res) {
     });
 });
 
+// not working 
 router.get("by-user/:username", async function (req, res) {
     const result = await getCommentsByUser(req.params.username);
     res.json({

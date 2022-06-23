@@ -20,7 +20,8 @@ export async function createPost(req) {
 // ************** Get Requests **************************************
 export async function getAllPosts() {
     const result = await query(`
-    SELECT * FROM posts;`);
+    SELECT * FROM posts
+    ORDER BY post_id DESC;`);
     return result.rows;
 };
 
