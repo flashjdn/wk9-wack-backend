@@ -17,7 +17,7 @@ const router = express.Router();
 
 // ************** Create Request **************************************
 
-router.get("/comments", (req, res) => {
+router.get("/", (req, res) => {
   res.json({ me: "dd" });
 });
 
