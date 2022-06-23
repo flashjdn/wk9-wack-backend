@@ -26,7 +26,7 @@ export async function createComment(req) {
 export async function getAllComments() {
   const result = await query(`
     SELECT * FROM comments`);
-  return result.payload;
+  return result.rows;
 }
 
 export async function getAllCommentsById(post_id) {
