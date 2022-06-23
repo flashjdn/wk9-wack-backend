@@ -23,18 +23,19 @@ export async function createComment(req) {
 }
 
 // ************** Get Requests **************************************
+//Jordan changed this to be ascending
 export async function getAllComments() {
   const result = await query(`
     SELECT * FROM comments
-    ORDER BY post_date DESC`);
+    ORDER BY post_date`);
   return result.rows;
 }
-
+//Jordan changed this to be ascending
 export async function getAllCommentsById(post_id) {
     const result = await query(`
     SELECT * FROM comments
     WHERE post_id = $1
-    ORDER BY post_date DESC;`,
+    ORDER BY post_date;`,
     [post_id]
   );
   return result.rows;
