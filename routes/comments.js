@@ -34,7 +34,7 @@ router.get("/", async function (req, res) {
     });
 });
 
-router.get("/all-comments/:post_id", async function (req, res) {
+router.get("/:post_id", async function (req, res) {
     const post_id = req.params.post_id;
     const result = await getAllCommentsById(post_id);
     res.json({
