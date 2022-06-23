@@ -25,7 +25,8 @@ export async function createComment(req) {
 // ************** Get Requests **************************************
 export async function getAllComments() {
   const result = await query(`
-    SELECT * FROM comments`);
+    SELECT * FROM comments
+    ORDER BY post_date DESC`);
   return result.rows;
 }
 
