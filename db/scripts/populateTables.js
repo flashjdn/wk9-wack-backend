@@ -53,7 +53,7 @@ async function populatePostsTable() {
     (1, 1, 'Raina', 'Great video to help with React', 'Check out this video here!', CURRENT_TIMESTAMP, 0,FALSE),
     (1, 4,'Mike', 'Great video to help with Node', 'Check out this video here!', CURRENT_TIMESTAMP, 2, TRUE),
     (2, 7, 'Stefano','Great video to help with SQL', 'Check out this video here!', CURRENT_TIMESTAMP, 3, FALSE),
-    (3, 10,'Jordan', 'Great video to help with Jester', 'Check out this video here!', CURRENT_TIMESTAMP, 1, TRUE);
+    (3, 10,'Jordan', 'Can anyone help with Jest and Supertest?', 'Check out this video here!', CURRENT_TIMESTAMP, 1, TRUE);
     `);
 };
 
