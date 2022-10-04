@@ -11,6 +11,7 @@ async function populateUsersTable() {
     ('fakeperson2', 'fake2', 'person2', 2345345, 'fakeperson2@gmail.com', CURRENT_TIMESTAMP),
     ('fakeperson3', 'fake3', 'person3', 435456, 'fakeperson3@gmail.com', CURRENT_TIMESTAMP);
     `);
+    console.log(`${res.command} Populated user table with dummy data`);
 };
 
 //*********************** Populate Learning Categories Table ***********************//
