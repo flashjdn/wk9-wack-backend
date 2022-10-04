@@ -1,16 +1,17 @@
 import { query } from "../index.js";
 
 //***************Populate Users Table ***********************//
+const popUsers = `INSERT INTO users (username, first_name, surname, password, email, join_date)
+VALUES
+('chocorainaaa', 'Raina', 'Blackett', 123456, 'blackettraina@gmail.com', CURRENT_TIMESTAMP),
+('mikey1985', 'Mike', 'Rushton', 654321, 'michaelwjrushton@gmail.com', CURRENT_TIMESTAMP),
+('fakeperson1', 'fake1', 'person1', 53462373, 'fakeperson1@gmail.com', CURRENT_TIMESTAMP),
+('fakeperson2', 'fake2', 'person2', 2345345, 'fakeperson2@gmail.com', CURRENT_TIMESTAMP),
+('fakeperson3', 'fake3', 'person3', 435456, 'fakeperson3@gmail.com', CURRENT_TIMESTAMP);
+`;
 async function populateUsersTable() {
-    const res = await query(`
-    INSERT INTO users (username, first_name, surname, password, email, join_date)
-    VALUES
-    ('chocorainaaa', 'Raina', 'Blackett', 123456, 'blackettraina@gmail.com', CURRENT_TIMESTAMP),
-    ('mikey1985', 'Mike', 'Rushton', 654321, 'michaelwjrushton@gmail.com', CURRENT_TIMESTAMP),
-    ('fakeperson1', 'fake1', 'person1', 53462373, 'fakeperson1@gmail.com', CURRENT_TIMESTAMP),
-    ('fakeperson2', 'fake2', 'person2', 2345345, 'fakeperson2@gmail.com', CURRENT_TIMESTAMP),
-    ('fakeperson3', 'fake3', 'person3', 435456, 'fakeperson3@gmail.com', CURRENT_TIMESTAMP);
-    `);
+    const res = await query
+    (popUsers);
     console.log(`${res.command} Populated user table with dummy data`);
 };
 
