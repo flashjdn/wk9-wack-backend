@@ -6,6 +6,7 @@ const pool = new pg.Pool({
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT,
+    url: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
   });
 
