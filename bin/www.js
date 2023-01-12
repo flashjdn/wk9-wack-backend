@@ -4,12 +4,12 @@
  * Module dependencies.
  */
 
-import debugLib from "debug";
+// import debugLib from "debug";
 import http from "http";
 
 import app from "../app.js";
 
-const debug = debugLib("week9-backend:server");
+// const debug = debugLib("week9-backend:server");
 
 /**
  * Get port from environment and store in Express.
@@ -86,5 +86,5 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-  debug("Listening on " + bind);
+  // debug("Listening on " + bind);
 }
