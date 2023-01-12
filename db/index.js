@@ -1,14 +1,23 @@
-import pg from "pg";
+// import pg from "pg";
 
+// const pool = new pg.Pool({
+//   //   user: process.env.PGUSER,
+//   //   host: process.env.PGHOST,
+//   //   database: process.env.PGDATABASE,
+//   //   password: process.env.PGPASSWORD,
+//   //   port: process.env.PGPORT,
+//   //   url: process.env.DATABASE_URL,
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: { rejectUnauthorized: false },
+// });
+
+import pg from "pg";
+import "dotenv/config";
 const pool = new pg.Pool({
-  //   user: process.env.PGUSER,
-  //   host: process.env.PGHOST,
-  //   database: process.env.PGDATABASE,
-  //   password: process.env.PGPASSWORD,
-  //   port: process.env.PGPORT,
-  //   url: process.env.DATABASE_URL,
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 // function poolEnvVarCheck() {
